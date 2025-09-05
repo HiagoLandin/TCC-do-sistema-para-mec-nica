@@ -200,6 +200,7 @@ body.dark-mode {
     border-radius: 8px;
     font-size: 0.9rem;
     border: 1px solid rgba(13, 110, 253, 0.3);
+    display: none; /* Ocultado após login */
 }
 
 .register-message i {
@@ -326,6 +327,7 @@ body.dark-mode .welcome-section p {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    cursor: pointer; /* Adicionado para indicar que é clicável */
 }
 
 .feature-card::before {
@@ -576,4 +578,31 @@ body.dark-mode .form-group input {
         justify-content: center;
         width: 100%;
     }
+}
+
+/* Novos estilos para funcionalidades adicionadas */
+.logged-in .register-message {
+    display: none !important;
+}
+
+.logged-in .user-name {
+    color: #4dabf7;
+}
+
+.logged-in .nav-item a {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.logged-out .nav-item a:not(.theme-toggle-item a) {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.feature-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+    width: 100%;
 }

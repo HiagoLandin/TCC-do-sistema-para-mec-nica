@@ -1,0 +1,646 @@
+/* veiculos.css - Estilos específicos para a página de veículos */
+
+/* Header da seção */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #0d6efd;
+}
+
+body.light-mode .section-header {
+    border-bottom-color: #0d6efd;
+}
+
+body.dark-mode .section-header {
+    border-bottom-color: #4dabf7;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+body.light-mode .section-header h2 {
+    color: #212529;
+}
+
+body.dark-mode .section-header h2 {
+    color: #f8f9fa;
+}
+
+/* Botão Adicionar */
+.btn-add {
+    background: linear-gradient(to right, #0d6efd, #0b5ed7);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+}
+
+/* Container da tabela */
+.table-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+body.light-mode .table-container {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e9ecef;
+}
+
+body.dark-mode .table-container {
+    background: linear-gradient(135deg, #2b2b2b 0%, #3d3d3d 100%);
+    border: 1px solid #495057;
+}
+
+/* Tabela de veículos */
+.vehicles-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.vehicles-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #0d6efd;
+}
+
+body.light-mode .vehicles-table th {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+body.dark-mode .vehicles-table th {
+    background-color: #2b2b2b;
+    color: #f8f9fa;
+}
+
+.vehicles-table td {
+    padding: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+body.light-mode .vehicles-table td {
+    color: #495057;
+    border-bottom-color: #dee2e6;
+}
+
+body.dark-mode .vehicles-table td {
+    color: #adb5bd;
+    border-bottom-color: #495057;
+}
+
+.vehicles-table tr:last-child td {
+    border-bottom: none;
+}
+
+.vehicles-table tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+body.dark-mode .vehicles-table tr:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+/* Status do veículo */
+.status-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 8px;
+}
+
+.status-maintenance {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.status-available {
+    background-color: #198754;
+    color: white;
+}
+
+.status-waiting {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Botões de ação */
+.btn-details {
+    background-color: transparent;
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+body.light-mode .btn-details {
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+body.dark-mode .btn-details {
+    border-color: #4dabf7;
+    color: #4dabf7;
+}
+
+.btn-details:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+body.dark-mode .btn-details:hover {
+    background-color: #4dabf7;
+    color: #1a1d21;
+}
+
+/* Mensagem quando não há veículos */
+.no-vehicles {
+    text-align: center;
+    font-style: italic;
+}
+
+body.light-mode .no-vehicles {
+    color: #6c757d;
+}
+
+body.dark-mode .no-vehicles {
+    color: #adb5bd;
+}
+
+/* Botão Voltar */
+.btn-back {
+    background-color: transparent;
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: 10px;
+}
+
+.btn-back:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+
+/* Botão Logout */
+.btn-logout {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-logout:hover {
+    background-color: #d70b0b;
+}
+
+/* Detalhes do veículo no modal */
+.vehicle-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detail-row {
+    display: flex;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+}
+
+body.dark-mode .detail-row {
+    border-bottom-color: #495057;
+}
+
+.detail-row.full-width {
+    flex-direction: column;
+}
+
+.detail-label {
+    font-weight: 600;
+    min-width: 150px;
+}
+
+body.light-mode .detail-label {
+    color: #212529;
+}
+
+body.dark-mode .detail-label {
+    color: #f8f9fa;
+}
+
+.detail-value {
+    flex-grow: 1;
+}
+
+body.light-mode .detail-value {
+    color: #6c757d;
+}
+
+body.dark-mode .detail-value {
+    color: #adb5bd;
+}
+
+.status-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+.status-maintenance {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.status-available {
+    background-color: #198754;
+    color: white;
+}
+
+.status-waiting {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Ícones específicos para cada status */
+.status-maintenance::before {
+    content: "\f0ad"; /* Ícone de ferramentas (Font Awesome) */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+.status-available::before {
+    content: "\f00c"; /* Ícone de check (Font Awesome) */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+.status-waiting::before {
+    content: "\f017"; /* Ícone de relógio (Font Awesome) */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+/* Item ativo no menu */
+.nav-item.active a {
+    background-color: rgba(13, 110, 253, 0.15);
+    color: white;
+}
+
+body.light-mode .nav-item.active a {
+    background-color: rgba(13, 110, 253, 0.15);
+}
+
+body.dark-mode .nav-item.active a {
+    background-color: rgba(13, 110, 253, 0.3);
+}
+
+ Container dos botões de ação */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Botão Editar */
+.btn-edit {
+    background-color: transparent;
+    border: 2px solid #ffc107;
+    color: #ffc107;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+body.light-mode .btn-edit {
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+body.dark-mode .btn-edit {
+    border-color: #ffca2c;
+    color: #ffca2c;
+}
+
+.btn-edit:hover {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+body.dark-mode .btn-edit:hover {
+    background-color: #ffca2c;
+    color: #1a1d21;
+}
+
+.vehicles-table td {
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}
+
+body.dark-mode .vehicles-table td {
+    border-color: #495057;
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: max-content;
+}
+
+.status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.status-text {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Cores dos status */
+.status-available {
+    background-color: #198754;
+    color: white;
+}
+
+.status-maintenance {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.status-waiting {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Textos específicos para cada status */
+.status-available .status-text {
+    color: #198754;
+}
+
+.status-maintenance .status-text {
+    color: #ffc107;
+}
+
+.status-waiting .status-text {
+    color: #6c757d;
+}
+
+body.dark-mode .status-available .status-text {
+    color: #4db880;
+}
+
+body.dark-mode .status-maintenance .status-text {
+    color: #ffd34e;
+}
+
+body.dark-mode .status-waiting .status-text {
+    color: #8c95a0;
+}
+
+/* Responsividade para os botões de ação */
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .btn-details,
+    .btn-edit {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.8rem;
+        padding: 5px 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .action-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .btn-details,
+    .btn-edit {
+        min-width: auto;
+        flex: 1;
+    }
+    
+    /* Esconde texto dos botões em telas muito pequenas */
+    @media (max-width: 400px) {
+        .btn-details span,
+        .btn-edit span {
+            display: none;
+        }
+        
+        .btn-details,
+        .btn-edit {
+            width: auto;
+            padding: 8px;
+        }
+        
+        .btn-details i,
+        .btn-edit i {
+            margin-right: 0;
+        }
+    }
+}
+
+/* ===== RESPONSIVIDADE - TELAS MENORES ===== */
+
+/* Tablets (768px a 1024px) */
+@media (max-width: 1024px) {
+    .vehicles-table th,
+    .vehicles-table td {
+        padding: 12px 10px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Tablets pequenos e smartphones grandes (576px a 768px) */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .vehicles-table {
+        min-width: 600px;
+    }
+    
+    .auth-buttons {
+        display: flex;
+        gap: 10px;
+    }
+}
+
+/* Smartphones (até 576px) */
+@media (max-width: 576px) {
+    .main-content {
+        padding: 20px 15px;
+    }
+    
+    .section-header h2 {
+        font-size: 1.7rem;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Torna a tabela mais compacta */
+    .vehicles-table th,
+    .vehicles-table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    /* Esconde colunas menos importantes em mobile */
+    .vehicles-table th:nth-child(3),
+    .vehicles-table td:nth-child(3),
+    .vehicles-table th:nth-child(5),
+    .vehicles-table td:nth-child(5) {
+        display: none;
+    }
+}
+
+/* Smartphones muito pequenos (até 375px) */
+@media (max-width: 375px) {
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .vehicles-table {
+        min-width: 500px;
+    }
+    
+    /* Ajusta a topbar */
+    .topbar-content {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .left-section {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .auth-buttons {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+}
+
+/* Ajustes para a sidebar em mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 250px;
+        left: -250px;
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+}
+
+/* Garante boa usabilidade em touch devices */
+@media (max-width: 768px) {
+    .btn-add, .btn-back, .btn-details {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Melhora a visualização do modal em mobile */
+@media (max-width: 576px) {
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .detail-label {
+        min-width: auto;
+    }
+}
