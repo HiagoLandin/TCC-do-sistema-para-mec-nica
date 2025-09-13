@@ -142,42 +142,76 @@ function initializeFeatureCards() {
     });
 }
 
-// Inicialização quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', function() {
-    initializeSidebar();
-    initializeModals();
-    initializeThemeToggle();
-    initializeFeatureCards();
+// Fechar mensagens de alerta
+function initializeMessageSystem() {
+    // Fechar ao clicar no botão X
+    document.querySelectorAll('.fechar-mensagem').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            this.parentElement.style.display = 'none';
+        });
+    });
     
-    // Verificar estado de login pela classe do body
-    const body = document.body;
-    if (body.classList.contains('logged-in')) {
-        updateUIForLoggedIn();
-    } else {
-        updateUIForLoggedOut();
-    }
-});
+    // Auto-fechar mensagens após 2 segundos
+    setTimeout(function() {
+        document.querySelectorAll('.mensagem-alerta').forEach(function(msg) {
+            msg.style.opacity = '0';
+            msg.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 500);
+        });
+    }, 2000);
+}
 
-// Atualizar UI baseado no estado de login (apenas para visual)
+// Atualizar UI quando usuário está logado
 function updateUIForLoggedIn() {
     const registerMessage = document.querySelector('.register-message');
     const logoutItem = document.getElementById('logoutItem');
+    const authButtons = document.querySelector('.auth-buttons');
     
     if (registerMessage) registerMessage.style.display = 'none';
     if (logoutItem) logoutItem.style.display = 'block';
+    if (authButtons) authButtons.style.display = 'none';
+    
+    // Remover classes disabled dos links
+    document.querySelectorAll('.disabled-link, .disabled-feature').forEach(element => {
+        element.classList.remove('disabled-link', 'disabled-feature');
+    });
 }
 
+// Atualizar UI quando usuário não está logado
 function updateUIForLoggedOut() {
     const registerMessage = document.querySelector('.register-message');
     const logoutItem = document.getElementById('logoutItem');
+    const authButtons = document.querySelector('.auth-buttons');
     
     if (registerMessage) registerMessage.style.display = 'block';
     if (logoutItem) logoutItem.style.display = 'none';
+    if (authButtons) authButtons.style.display = 'flex';
 }
+
+// Prevenir clique em links desabilitados
+function initializeProtectedLinks() {
+    document.addEventListener('click', function(e) {
+        const disabledLink = e.target.closest('.disabled-link') || e.target.closest('.disabled-feature');
+        
+        if (disabledLink) {
+            e.preventDefault();
+            alert('Você precisa estar logado para acessar esta funcionalidade.');
+        }
+    });
+}
+
 // Botão Voltar
-document.getElementById('btnBack').addEventListener('click', () => {
-    window.history.back();
-});
+function initializeBackButton() {
+    const btnBack = document.getElementById('btnBack');
+    if (btnBack) {
+        btnBack.addEventListener('click', () => {
+            window.history.back();
+        });
+    }
+}
 
 function initializeAddButtons() {
     // Botão adicionar veículo
@@ -196,3 +230,23 @@ function initializeAddButtons() {
         });
     }
 }
+
+// Inicialização quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSidebar();
+    initializeModals();
+    initializeThemeToggle();
+    initializeFeatureCards();
+    initializeMessageSystem();
+    initializeProtectedLinks();
+    initializeBackButton();
+    initializeAddButtons();
+    
+    // Verificar estado de login pela classe do body
+    const body = document.body;
+    if (body.classList.contains('logged-in')) {
+        updateUIForLoggedIn();
+    } else {
+        updateUIForLoggedOut();
+    }
+});

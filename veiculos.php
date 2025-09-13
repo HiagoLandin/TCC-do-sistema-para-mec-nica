@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Verificar se o usuário está logado, se não, redirecionar
+if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+    header("Location: index.php");
+    exit;
+}
+
+$nomeUsuario = isset($_SESSION['usuario_nome']) ? $_SESSION['usuario_nome'] : 'Usuário';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -34,8 +46,8 @@
                 <div class="user-avatar">
                     <i class="fas fa-user-circle"></i>
                 </div>
-                <span class="user-name">Usuário</span>
-            </div>
+                    <span class="user-name"><?php echo htmlspecialchars($nomeUsuario); ?></span>            
+                </div>
             
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -45,13 +57,13 @@
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a href="#">
+                    <a href="veiculos.php">
                         <i class="fas fa-car"></i>
                         <span>Veículos</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="clientes.php">
                         <i class="fas fa-users"></i>
                         <span>Clientes</span>
                     </a>
