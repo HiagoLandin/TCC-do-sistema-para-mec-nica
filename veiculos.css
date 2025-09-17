@@ -7,15 +7,14 @@
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #0d6efd;
 }
 
 body.light-mode .section-header {
-    border-bottom-color: #0d6efd;
+    border-bottom: 2px solid #0d6efd;
 }
 
 body.dark-mode .section-header {
-    border-bottom-color: #4dabf7;
+    border-bottom: 2px solid #4dabf7;
 }
 
 .section-header h2 {
@@ -79,32 +78,32 @@ body.dark-mode .table-container {
     padding: 15px;
     text-align: left;
     font-weight: 600;
-    border-bottom: 2px solid #0d6efd;
 }
 
 body.light-mode .vehicles-table th {
     background-color: #f8f9fa;
     color: #212529;
+    border-bottom: 2px solid #0d6efd;
 }
 
 body.dark-mode .vehicles-table th {
     background-color: #2b2b2b;
     color: #f8f9fa;
+    border-bottom: 2px solid #4dabf7;
 }
 
 .vehicles-table td {
     padding: 15px;
-    border-bottom: 1px solid #dee2e6;
 }
 
 body.light-mode .vehicles-table td {
     color: #495057;
-    border-bottom-color: #dee2e6;
+    border-bottom: 1px solid #dee2e6;
 }
 
 body.dark-mode .vehicles-table td {
     color: #adb5bd;
-    border-bottom-color: #495057;
+    border-bottom: 1px solid #495057;
 }
 
 .vehicles-table tr:last-child td {
@@ -120,36 +119,51 @@ body.dark-mode .vehicles-table tr:hover {
 }
 
 /* Status do veículo */
-.status-icon {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 24px;
-    margin-right: 8px;
+.status-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.status-maintenance {
-    background-color: #ffc107;
-    color: #212529;
+.status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    margin-right: 6px;
 }
 
 .status-available {
-    background-color: #198754;
-    color: white;
+    background-color: rgba(25, 135, 84, 0.15);
+    color: #198754;
 }
 
 .status-waiting {
-    background-color: #6c757d;
-    color: white;
+    background-color: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+}
+
+.status-maintenance {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+.status-text {
+    font-weight: 500;
 }
 
 /* Botões de ação */
-.btn-details {
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-details, .btn-edit {
     background-color: transparent;
-    border: 2px solid #0d6efd;
-    color: #0d6efd;
+    border: 2px solid;
     padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
@@ -161,7 +175,7 @@ body.dark-mode .vehicles-table tr:hover {
     font-size: 0.9rem;
 }
 
-body.light-mode .btn-details {
+.btn-details {
     border-color: #0d6efd;
     color: #0d6efd;
 }
@@ -181,10 +195,78 @@ body.dark-mode .btn-details:hover {
     color: #1a1d21;
 }
 
+.btn-edit {
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+body.dark-mode .btn-edit {
+    border-color: #ffca2c;
+    color: #ffca2c;
+}
+
+.btn-edit:hover {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+body.dark-mode .btn-edit:hover {
+    background-color: #ffca2c;
+    color: #1a1d21;
+}
+
+/* Botão de lixeira para remover */
+.btn-delete {
+    background-color: transparent;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode .btn-delete {
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+body.dark-mode .btn-delete:hover {
+    background-color: #e74c3c;
+    color: #1a1d21;
+}
+
+/* Botão de confirmação de remoção */
+.btn-delete-confirm {
+    background: linear-gradient(to right, #dc3545, #c82333);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-delete-confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
 /* Mensagem quando não há veículos */
 .no-vehicles {
     text-align: center;
     font-style: italic;
+    padding: 30px;
 }
 
 body.light-mode .no-vehicles {
@@ -216,310 +298,243 @@ body.dark-mode .no-vehicles {
     color: white;
 }
 
-
-/* Botão Logout */
-.btn-logout {
-    background-color: #0d6efd;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    display: flex;
+/* Modal Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
     align-items: center;
-    gap: 5px;
 }
 
-.btn-logout:hover {
-    background-color: #d70b0b;
-}
-
-/* Detalhes do veículo no modal */
-.vehicle-details {
+/* Modal Content - Estilo seguindo o theme */
+.modal-content {
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    border: 2px solid #0d6efd;
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
-.detail-row {
+body.light-mode .modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+body.dark-mode .modal-content {
+    background: linear-gradient(135deg, #2b2b2b 0%, #3d3d3d 100%);
+}
+
+.modal-header {
     display: flex;
-    border-bottom: 1px solid #dee2e6;
-    padding-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid;
 }
 
-body.dark-mode .detail-row {
+body.light-mode .modal-header {
+    border-bottom-color: #dee2e6;
+}
+
+body.dark-mode .modal-header {
     border-bottom-color: #495057;
 }
 
-.detail-row.full-width {
-    flex-direction: column;
-}
-
-.detail-label {
+.modal-header h2 {
     font-weight: 600;
-    min-width: 150px;
+    margin: 0;
 }
 
-body.light-mode .detail-label {
+body.light-mode .modal-header h2 {
     color: #212529;
 }
 
-body.dark-mode .detail-label {
+body.dark-mode .modal-header h2 {
     color: #f8f9fa;
 }
 
-.detail-value {
-    flex-grow: 1;
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-body.light-mode .detail-value {
+body.light-mode .close-modal {
     color: #6c757d;
 }
 
-body.dark-mode .detail-value {
+body.dark-mode .close-modal {
     color: #adb5bd;
 }
 
-.status-icon {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 24px;
-    margin-right: 8px;
-    font-size: 0.9rem;
+.close-modal:hover {
+    color: #0d6efd;
 }
 
-.status-maintenance {
-    background-color: #ffc107;
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(90vh - 80px);
+}
+
+/* Personalização da scrollbar do modal - igual à sidebar */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+body.light-mode .modal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #0d6efd;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+body.light-mode .form-group label {
     color: #212529;
 }
 
-.status-available {
-    background-color: #198754;
-    color: white;
+body.dark-mode .form-group label {
+    color: #f8f9fa;
 }
 
-.status-waiting {
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+body.light-mode .form-group input,
+body.light-mode .form-group select {
+    border-color: #ced4da;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select {
+    border-color: #495057;
+    background-color: #2b2b2b;
+    color: #f8f9fa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-cancel {
     background-color: #6c757d;
     color: white;
-}
-
-/* Ícones específicos para cada status */
-.status-maintenance::before {
-    content: "\f0ad"; /* Ícone de ferramentas (Font Awesome) */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-}
-
-.status-available::before {
-    content: "\f00c"; /* Ícone de check (Font Awesome) */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-}
-
-.status-waiting::before {
-    content: "\f017"; /* Ícone de relógio (Font Awesome) */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-}
-
-/* Item ativo no menu */
-.nav-item.active a {
-    background-color: rgba(13, 110, 253, 0.15);
-    color: white;
-}
-
-body.light-mode .nav-item.active a {
-    background-color: rgba(13, 110, 253, 0.15);
-}
-
-body.dark-mode .nav-item.active a {
-    background-color: rgba(13, 110, 253, 0.3);
-}
-
- Container dos botões de ação */
-.action-buttons {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-/* Botão Editar */
-.btn-edit {
-    background-color: transparent;
-    border: 2px solid #ffc107;
-    color: #ffc107;
-    padding: 6px 12px;
+    border: none;
+    padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.9rem;
 }
 
-body.light-mode .btn-edit {
-    border-color: #ffc107;
-    color: #ffc107;
+.btn-cancel:hover {
+    background-color: #5a6268;
 }
 
-body.dark-mode .btn-edit {
-    border-color: #ffca2c;
-    color: #ffca2c;
-}
-
-.btn-edit:hover {
-    background-color: #ffc107;
-    color: #212529;
-}
-
-body.dark-mode .btn-edit:hover {
-    background-color: #ffca2c;
-    color: #1a1d21;
-}
-
-.vehicles-table td {
-    vertical-align: middle;
-    border: 1px solid #dee2e6;
-}
-
-body.dark-mode .vehicles-table td {
-    border-color: #495057;
-}
-
-.status-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: max-content;
-}
-
-.status-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    flex-shrink: 0;
-}
-
-.status-text {
+.btn-submit {
+    background: linear-gradient(to right, #0d6efd, #0b5ed7);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
     font-weight: 500;
-    white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
-/* Cores dos status */
-.status-available {
-    background-color: #198754;
-    color: white;
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
 }
 
-.status-maintenance {
-    background-color: #ffc107;
-    color: #212529;
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: 500;
 }
 
-.status-waiting {
-    background-color: #6c757d;
-    color: white;
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
 }
 
-/* Textos específicos para cada status */
-.status-available .status-text {
-    color: #198754;
+body.dark-mode .alert-success {
+    background-color: #1c4b27;
+    color: #d4edda;
+    border-color: #155724;
 }
 
-.status-maintenance .status-text {
-    color: #ffc107;
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
-.status-waiting .status-text {
-    color: #6c757d;
+body.dark-mode .alert-error {
+    background-color: #4a1c24;
+    color: #f8d7da;
+    border-color: #721c24;
 }
 
-body.dark-mode .status-available .status-text {
-    color: #4db880;
-}
-
-body.dark-mode .status-maintenance .status-text {
-    color: #ffd34e;
-}
-
-body.dark-mode .status-waiting .status-text {
-    color: #8c95a0;
-}
-
-/* Responsividade para os botões de ação */
-@media (max-width: 768px) {
-    .action-buttons {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .btn-details,
-    .btn-edit {
-        width: 100%;
-        justify-content: center;
-        font-size: 0.8rem;
-        padding: 5px 8px;
-    }
-}
-
-@media (max-width: 576px) {
-    .action-buttons {
-        flex-direction: row;
-        justify-content: center;
-    }
-    
-    .btn-details,
-    .btn-edit {
-        min-width: auto;
-        flex: 1;
-    }
-    
-    /* Esconde texto dos botões em telas muito pequenas */
-    @media (max-width: 400px) {
-        .btn-details span,
-        .btn-edit span {
-            display: none;
-        }
-        
-        .btn-details,
-        .btn-edit {
-            width: auto;
-            padding: 8px;
-        }
-        
-        .btn-details i,
-        .btn-edit i {
-            margin-right: 0;
-        }
-    }
-}
-
-/* ===== RESPONSIVIDADE - TELAS MENORES ===== */
-
-/* Tablets (768px a 1024px) */
-@media (max-width: 1024px) {
-    .vehicles-table th,
-    .vehicles-table td {
-        padding: 12px 10px;
-    }
-    
-    .section-header h2 {
-        font-size: 2rem;
-    }
-}
-
-/* Tablets pequenos e smartphones grandes (576px a 768px) */
+/* Responsividade */
 @media (max-width: 768px) {
     .section-header {
         flex-direction: column;
@@ -527,120 +542,140 @@ body.dark-mode .status-waiting .status-text {
         gap: 15px;
     }
     
-    .table-container {
-        overflow-x: auto;
-    }
-    
-    .vehicles-table {
-        min-width: 600px;
-    }
-    
-    .auth-buttons {
-        display: flex;
-        gap: 10px;
-    }
-}
-
-/* Smartphones (até 576px) */
-@media (max-width: 576px) {
-    .main-content {
-        padding: 20px 15px;
-    }
-    
-    .section-header h2 {
-        font-size: 1.7rem;
-        text-align: center;
-        width: 100%;
-    }
-    
-    .btn-add {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    /* Torna a tabela mais compacta */
-    .vehicles-table th,
-    .vehicles-table td {
-        padding: 10px 8px;
-        font-size: 0.9rem;
-    }
-    
-    /* Esconde colunas menos importantes em mobile */
-    .vehicles-table th:nth-child(3),
-    .vehicles-table td:nth-child(3),
-    .vehicles-table th:nth-child(5),
-    .vehicles-table td:nth-child(5) {
-        display: none;
-    }
-}
-
-/* Smartphones muito pequenos (até 375px) */
-@media (max-width: 375px) {
-    .section-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .vehicles-table {
-        min-width: 500px;
-    }
-    
-    /* Ajusta a topbar */
-    .topbar-content {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    
-    .left-section {
-        order: 1;
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .auth-buttons {
-        order: 2;
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .logo {
-        font-size: 1.3rem;
-    }
-}
-
-/* Ajustes para a sidebar em mobile */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 250px;
-        left: -250px;
-    }
-    
-    .sidebar.open {
-        left: 0;
-    }
-}
-
-/* Garante boa usabilidade em touch devices */
-@media (max-width: 768px) {
-    .btn-add, .btn-back, .btn-details {
-        min-height: 44px;
-        min-width: 44px;
-    }
-}
-
-/* Melhora a visualização do modal em mobile */
-@media (max-width: 576px) {
-    .modal-content {
-        width: 95%;
-        margin: 10px;
-        padding: 20px;
-    }
-    
-    .detail-row {
+    .action-buttons {
         flex-direction: column;
         gap: 5px;
     }
     
-    .detail-label {
-        min-width: auto;
+    .btn-details,
+    .btn-edit {
+        width: 100%;
+        justify-content: center;
     }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-cancel,
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn-details span,
+    .btn-edit span {
+        display: none;
+    }
+    
+    .btn-details,
+    .btn-edit {
+        width: auto;
+        padding: 8px;
+    }
+    
+    .btn-details i,
+    .btn-edit i {
+        margin-right: 0;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: #212529;
+    color: white;
+    transition: all 0.3s ease;
+    z-index: 99;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    border-right: 2px solid #0d6efd;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-nav {
+    padding-top: 70px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.user-avatar {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #0d6efd;
+}
+
+.user-name {
+    font-weight: 500;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 10px 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin: 0 10px;
+}
+
+.nav-item {
+    margin-bottom: 8px;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.nav-item a:hover {
+    background-color: rgba(13, 110, 253, 0.15);
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-item i {
+    font-size: 1.3rem;
+    margin-right: 15px;
+    width: 24px;
+    text-align: center;
+    color: #0d6efd;
+}
+
+.theme-toggle-item i {
+    color: #ffc107 !important;
+}
+
+.nav-item.active a {
+    background-color: rgba(13, 110, 253, 0.15);
+    color: white;
+    font-weight: 500;
 }

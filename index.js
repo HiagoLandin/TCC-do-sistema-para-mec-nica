@@ -3,7 +3,7 @@ function initializeSidebar() {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     
-    if (!sidebarToggle) return;
+    if (!sidebar || !sidebarToggle) return;
     
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('open');
@@ -33,10 +33,14 @@ function closeSidebar() {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     
-    sidebar.classList.remove('open');
+    if (sidebar) sidebar.classList.remove('open');
+    
     if (sidebarToggle) {
-        sidebarToggle.querySelector('i').classList.remove('fa-times');
-        sidebarToggle.querySelector('i').classList.add('fa-bars');
+        const icon = sidebarToggle.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
     }
     document.body.style.overflow = 'auto';
 }
@@ -52,12 +56,14 @@ function initializeModals() {
     if (btnLogin && loginModal) {
         btnLogin.addEventListener('click', () => {
             loginModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         });
     }
     
     if (btnRegister && registerModal) {
         btnRegister.addEventListener('click', () => {
             registerModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         });
     }
     
@@ -78,6 +84,7 @@ function closeAllModals() {
     
     if (loginModal) loginModal.style.display = 'none';
     if (registerModal) registerModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
 
 // Controle do modo escuro
@@ -213,16 +220,46 @@ function initializeBackButton() {
     }
 }
 
-function initializeAddButtons() {
-    // Botão adicionar veículo
-    const btnAddVehicle = document.getElementById('btnAddVehicle');
-    if (btnAddVehicle) {
-        btnAddVehicle.addEventListener('click', () => {
-            alert('Funcionalidade de adicionar veículo será implementada em breve!');
-        });
+// Controle do modal de adicionar veículo
+function initializeVehicleModal() {
+    const addVehicleBtn = document.getElementById('btnAddVehicle');
+    const addVehicleModal = document.getElementById('addVehicleModal');
+    const closeAddModal = document.getElementById('closeAddModal');
+    const cancelAddBtn = document.getElementById('cancelAddVehicle');
+    
+    if (!addVehicleBtn || !addVehicleModal) return;
+    
+    // Abrir modal
+    addVehicleBtn.addEventListener('click', function() {
+        addVehicleModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+    
+    // Fechar modal
+    function closeModal() {
+        addVehicleModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
     
-    // Botão adicionar cliente
+    if (closeAddModal) closeAddModal.addEventListener('click', closeModal);
+    if (cancelAddBtn) cancelAddBtn.addEventListener('click', closeModal);
+    
+    // Fechar modal clicando fora dele
+    addVehicleModal.addEventListener('click', function(e) {
+        if (e.target === addVehicleModal) closeModal();
+    });
+    
+    // Definir data atual como padrão
+    const dataEntrada = document.getElementById('data_entrada');
+    if (dataEntrada) {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        dataEntrada.value = formattedDate;
+    }
+}
+
+// Botão adicionar cliente
+function initializeAddClientButton() {
     const btnAddClient = document.getElementById('btnAddClient');
     if (btnAddClient) {
         btnAddClient.addEventListener('click', () => {
@@ -231,7 +268,7 @@ function initializeAddButtons() {
     }
 }
 
-// Inicialização quando o DOM estiver carregado
+// Inicialização única quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
     initializeSidebar();
     initializeModals();
@@ -240,11 +277,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMessageSystem();
     initializeProtectedLinks();
     initializeBackButton();
-    initializeAddButtons();
+    initializeVehicleModal();
+    initializeAddClientButton();
     
-    // Verificar estado de login pela classe do body
-    const body = document.body;
-    if (body.classList.contains('logged-in')) {
+    // Verificar estado de login
+    if (document.body.classList.contains('logged-in')) {
         updateUIForLoggedIn();
     } else {
         updateUIForLoggedOut();
