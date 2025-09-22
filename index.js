@@ -160,7 +160,7 @@ function initializeMessageSystem() {
     
     // Auto-fechar mensagens após 2 segundos
     setTimeout(function() {
-        document.querySelectorAll('.mensagem-alerta').forEach(function(msg) {
+        document.querySelectorAll('.alert, .mensagem-alerta').forEach(function(msg) {
             msg.style.opacity = '0';
             msg.style.transition = 'opacity 0.5s ease';
             
@@ -258,16 +258,6 @@ function initializeVehicleModal() {
     }
 }
 
-// Botão adicionar cliente
-function initializeAddClientButton() {
-    const btnAddClient = document.getElementById('btnAddClient');
-    if (btnAddClient) {
-        btnAddClient.addEventListener('click', () => {
-            alert('Funcionalidade de adicionar cliente será implementada em breve!');
-        });
-    }
-}
-
 // Inicialização única quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
     initializeSidebar();
@@ -278,7 +268,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeProtectedLinks();
     initializeBackButton();
     initializeVehicleModal();
-    initializeAddClientButton();
     
     // Verificar estado de login
     if (document.body.classList.contains('logged-in')) {
