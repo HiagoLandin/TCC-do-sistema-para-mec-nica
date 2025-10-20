@@ -285,10 +285,16 @@ if (isset($_GET['editar'])) {
                         <span>Início</span>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="veiculos.php">
                         <i class="fas fa-car"></i>
                         <span>Veículos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="servicos.php">
+                        <i class="fas fa-tools"></i>
+                        <span>Serviços</span>
                     </a>
                 </li>
                 <li class="nav-item">

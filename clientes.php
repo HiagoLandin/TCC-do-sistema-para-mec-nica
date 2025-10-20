@@ -143,6 +143,12 @@ if (isset($_GET['editar'])) {
                     </a>
                 </li>
                 <li class="nav-item active">
+                    <a href="servicos.php">
+                        <i class="fas fa-tools"></i>
+                        <span>Serviços</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
                     <a href="clientes.php">
                         <i class="fas fa-users"></i>
                         <span>Clientes</span>

@@ -85,6 +85,12 @@ $nomeUsuario = $usuarioLogado ? $_SESSION['usuario_nome'] : 'Convidado';
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="servicos.php">
+                        <i class="fas fa-tools"></i>
+                        <span>Serviços</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="clientes.php" class="<?php echo $usuarioLogado ? '' : 'disabled-link'; ?>">                        <i class="fas fa-users"></i>
                         <span>Clientes</span>
                     </a>
@@ -134,7 +140,7 @@ $nomeUsuario = $usuarioLogado ? $_SESSION['usuario_nome'] : 'Convidado';
                 </div>
                 
                 <div class="feature-card">
-                    <a href="#" class="feature-link" data-feature="servicos">
+                    <a href="servicos.php" class="feature-link" data-feature="servicos">
                         <div class="feature-icon">
                             <i class="fas fa-tools"></i>
                         </div>
